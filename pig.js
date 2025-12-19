@@ -18,7 +18,7 @@ document.querySelector(".btn-roll").addEventListener("click", function(){
         generateDiceOutcome()
     }while(diceOutcome < 1 || diceOutcome > 6)
         // document.querySelector('.dice-outcome').textContent=`Dice Outcome : ${diceOutcome}`
-        document.querySelector('.dice-image').setAttribute('src', `../ASSETS/dice-${diceOutcome}.png`)
+        document.querySelector('.dice-image').setAttribute('src', `Assets/dice-${diceOutcome}.png`)
 
     if(diceOutcome!==1){
     currentvalue+=diceOutcome;

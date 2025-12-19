@@ -1,155 +1,151 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
+
 body, html {
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    /* Mobile par scroll allow karne ke liye overflow-y auto kiya hai */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
-.main{
+
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width:100%;
+    min-height: 100%; /* Height fixed ki jagah min-height use karein */
+    width: 100%;
     background-color: rgb(188, 141, 230);
+    padding: 20px;
 }
-.center{
+
+.center {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 60%;
-    height: 100%;
+    min-height: 80vh; /* Fixed height ki jagah min-height taaki content fit ho sake */
     background-color: rgb(222, 203, 241);
     border-radius: 20px;
-    box-shadow: 0  4px 8px rgba(0, 0, 0, 0.2);
-}
-.center h3{
-    color:rgb(170, 123, 236);
-    font-size: 50px;
-    margin-bottom: 10px;
-    align-items: center;
-    text-align: center;
-    /* font-weight: 500; */
-}
-.player{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width:50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    /* margin-right:400px; */
 }
-.score{
-    color:white;
+
+.center h3 {
+    color: rgb(170, 123, 236);
+    font-size: 50px;
     margin-bottom: 10px;
+    text-align: center;
+}
+
+.player {
+    display: flex;
+    flex-direction: row; /* Desktop par side-by-side scores */
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 20px;
+    gap: 20px;
+}
+
+.score, .current {
+    color: white;
     background-color: rgb(188, 141, 230);
-    width:150px;
-    height:120px;
-    border-radius: 10%;
+    width: 150px;
+    height: 120px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.score h1{
-    font-size: 30px;
-    margin: 0;
-}
-.score p{
-    font-size: 20px;
-    margin: 0;
-}
-.score-number{
-    font-size: 50px;
-    margin-top: 10px;
-}
-.current{
-    color:white;
-    margin-bottom: 10px;
-    background-color: rgb(188, 141, 230);
-    width:150px;
-    height:120px;
-    border-radius: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.current p{
-    font-size: 30px;
-    margin: 0;
-}
-.current-number{
-    font-size: 50px;
-    margin-top: 10px;
-}
-.buttons{
-    height:100%;
-    width: 50%;
-    /* margin-left:400px; */
+
+.score h1 { font-size: 25px; margin: 0; }
+.score p { font-size: 14px; }
+.score-number, .current-number { font-size: 40px; }
+
+.buttons {
+    width: 100%;
     display: flex; 
     flex-direction: row;
+    flex-wrap: wrap; /* Buttons wrap ho sakein agar jagah kam ho */
     align-items: center;
     justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
 }
-.dice-image{
-    width:80px;
-    height:80px;
-    margin:5px;
+
+.dice-image {
+    width: 80px;
+    height: 80px;
+    margin: 20px;
 }
-.btn-roll{
+
+button {
     background-color: rgb(188, 141, 230);
     color: white;
-    font-size: 30px;
-    padding: 8px 50px;
-    border:none;
-    border-radius: 20px;
-    cursor: pointer;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right:10px;
-}
-.btn-hold{
-    background-color: rgb(188, 141, 230);
-    color: white;
-    font-size: 30px;
-    padding: 8px 40px;
+    font-size: 20px;
+    padding: 10px 30px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    /* margin-bottom:10px; */
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right:10px;
+    transition: all 0.3s ease;
 }
-.btn-new{
-    background-color: rgb(188, 141, 230);
-    color: white;
-    font-size: 30px;
-    padding: 8px 50px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.btn-roll:hover ,.btn-hold:hover, .btn-new:hover {
+
+button:hover {
     background-color: rgb(150, 100, 200);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.hidden{
-    display: none;
+
+.won, .loss {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.hidden { display: none; }
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* Tablets ke liye (Max width 768px) */
+@media (max-width: 768px) {
+    .center {
+        width: 90%;
+    }
+    .center h3 {
+        font-size: 35px;
+    }
+}
+
+/* Mobile Phones ke liye (Max width 480px) */
+@media (max-width: 480px) {
+    .main {
+        padding: 10px;
+    }
+    .center {
+        width: 100%;
+        padding: 10px;
+    }
+    .center h3 {
+        font-size: 28px;
+    }
+    .player {
+        flex-direction: column; /* Score boxes ek ke niche ek aayenge */
+    }
+    .buttons {
+        flex-direction: column; /* Buttons list ki tarah dikhenge */
+    }
+    button {
+        width: 80%; /* Mobile par buttons thode bade aur full width honge */
+        font-size: 18px;
+    }
+    .score, .current {
+        width: 130px;
+        height: 100px;
+    }
 }
